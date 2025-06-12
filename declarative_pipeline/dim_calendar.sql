@@ -1,13 +1,13 @@
 -- Databricks notebook source
 -- MAGIC %md
--- MAGIC ## Lakehouse Calendar Dimension for Delta Live Tables (DLT)
--- MAGIC This notebook creates a calendar dimension (Also known as date dimension) for the lakehouse. It is intended to be executed within a Delta Live Tables (DLT) pipeline, and defaults to loading data using a rolling 5 year period.
--- MAGIC 
+-- MAGIC ## Lakehouse Calendar Dimension for Declarative Pipelines
+-- MAGIC This notebook creates a calendar dimension (Also known as date dimension) for the lakehouse. It is intended to be executed within Declarative Pipelines, and defaults to loading data using a rolling 5 year period.
+-- MAGIC
 -- MAGIC ### Directions
 -- MAGIC - Modify the date range as necessary by updating the dates CTE.
 -- MAGIC - Add/modify/remove columns as necessary.
--- MAGIC - Add to Delta Live Tables (DLT) Pipeline
--- MAGIC 
+-- MAGIC - Add to a Declarative Pipeline
+-- MAGIC
 -- MAGIC ### References
 -- MAGIC - [Five Simple Steps for Implementing a Star Schema in Databricks With Delta Lake](https://www.databricks.com/blog/2022/05/20/five-simple-steps-for-implementing-a-star-schema-in-databricks-with-delta-lake.html)
 -- MAGIC - [Datetime Patterns for Formatting and Parsing](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)
@@ -17,10 +17,9 @@
 -- DBTITLE 1,Load dim_calendar
 create or refresh live table dim_calendar
 comment "Calendar dimension"
+cluster by (date_int)
 tblproperties (
-  "quality" = "gold",
-  "delta.targetFileSize" = "67108864",
-  "pipelines.autoOptimize.zOrderCols" = "calendar_date"
+  "quality" = "gold"
 )
 as
 --Set the date range in the dates CTE below
@@ -61,5 +60,3 @@ select
   (month(calendar_date) + 5) % 12 + 1 AS fiscal_month_jul_to_jun
 from
   dates
-order by
-  calendar_date

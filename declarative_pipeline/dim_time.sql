@@ -1,12 +1,12 @@
 -- Databricks notebook source
 -- MAGIC %md
--- MAGIC ## Lakehouse Time Dimension for Delta Live Tables (DLT)
+-- MAGIC ## Lakehouse Time Dimension for Declarative Pipelines
 -- MAGIC This notebook creates a time dimension for the lakehouse.
--- MAGIC 
+-- MAGIC
 -- MAGIC ### Directions
 -- MAGIC - Add/modify/remove columns as necessary
--- MAGIC - Add to Delta Live Tables (DLT) Pipeline
--- MAGIC 
+-- MAGIC - Add to a Declarative Pipeline
+-- MAGIC
 -- MAGIC ### References
 -- MAGIC - [Five Simple Steps for Implementing a Star Schema in Databricks With Delta Lake](https://www.databricks.com/blog/2022/05/20/five-simple-steps-for-implementing-a-star-schema-in-databricks-with-delta-lake.html)
 -- MAGIC - [Datetime Patterns for Formatting and Parsing](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)
@@ -16,8 +16,7 @@
 create or refresh live table dim_time
 comment 'Time dimension'
 tblproperties (
-  "quality" = "gold",
-  "delta.targetFileSize" = "67108864"
+  "quality" = "gold"
 )
 as
 with times as (
