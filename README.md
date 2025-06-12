@@ -5,9 +5,9 @@ Generate calendar & time dimensions for the Databricks Lakehouse Platform. Deriv
 
 ## Features
 - Generate calendar/date and time dimensions in Delta Lake format
-- Includes notebooks for Databricks Workflows and Delta Live Tables (DLT) pipelines
-- SQL notebooks easy to modify to meet requirements
-- Lightweight and fast (Even with single-node clusters)
+- Includes notebooks for Databricks Jobs and Declarative Pipelines
+- SQL notebooks are easy to modify to meet requirements
+- Lightweight and fast
 
   
 **Calendar dimension** (Not all columns shown)
