@@ -1,12 +1,12 @@
 -- Databricks notebook source
 -- MAGIC %md
--- MAGIC ## Lakehouse Calendar Dimension for Declarative Pipelines
--- MAGIC This notebook creates a calendar dimension (Also known as date dimension) for the lakehouse. It is intended to be executed within Declarative Pipelines, and defaults to loading data using a rolling 5 year period.
+-- MAGIC ## Calendar Dimension for Lakeflow Declarative Pipelines
+-- MAGIC This notebook creates a calendar dimension (Also known as date dimension) for the lakehouse. It is intended to be executed within Lakeflow Declarative Pipelines, and defaults to loading data using a rolling 5 year period.
 -- MAGIC
 -- MAGIC ### Directions
 -- MAGIC - Modify the date range as necessary by updating the dates CTE.
 -- MAGIC - Add/modify/remove columns as necessary.
--- MAGIC - Add to a Declarative Pipeline
+-- MAGIC - Add to a Lakeflow Declarative Pipeline
 -- MAGIC
 -- MAGIC ### References
 -- MAGIC - [Five Simple Steps for Implementing a Star Schema in Databricks With Delta Lake](https://www.databricks.com/blog/2022/05/20/five-simple-steps-for-implementing-a-star-schema-in-databricks-with-delta-lake.html)
